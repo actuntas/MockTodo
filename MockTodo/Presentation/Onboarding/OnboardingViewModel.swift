@@ -39,7 +39,7 @@ final class OnboardingViewModel: ObservableObject {
     }
     
     func completeOnboarding() {
-        UserDefaults.standard.set(true, forKey: "isOnboarded")
+        isOnboarded.toggle()
     }
 }
 
