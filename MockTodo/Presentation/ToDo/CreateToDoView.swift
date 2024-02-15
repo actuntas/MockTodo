@@ -15,8 +15,8 @@ struct CreateToDoView: View {
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Task Title", text: $title)
-                Button("Create") {
+                TextField(Constants.todoTitle, text: $title)
+                Button(Constants.create) {
                     let newTask = ToDo(title: title)
                     onAdd(newTask)
                     dismiss()
@@ -25,17 +25,24 @@ struct CreateToDoView: View {
                 .buttonStyle(.borderedProminent)
                 .padding(.vertical)
                 .disabled(title.isEmpty)
-                .navigationTitle("Add Task")
+                .navigationTitle(Constants.addTask)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button("Cancel") {
+                        Button(Constants.cancel) {
                             dismiss()
                         }
                     }
                 }
             }
         }
+    }
+    
+    private enum Constants {
+        static let cancel = "Cancel"
+        static let addTask = "Add Task"
+        static let create = "Create"
+        static let todoTitle = "ToDo Title"
     }
 }
 

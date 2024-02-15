@@ -7,10 +7,10 @@
 
 import Foundation
 
-class ToDoUseCase {
-    private let repository: ToDoRepositoryProtocol
+final class ToDoUseCase {
+    private let repository: ToDoRepository
     
-    init(repository: ToDoRepositoryProtocol) {
+    init(repository: ToDoRepository) {
         self.repository = repository
     }
     
@@ -24,9 +24,5 @@ class ToDoUseCase {
     
     func removeToDo(_ index: Int) {
         repository.removeToDo(index)
-    }
-    
-    func checkToDo() {
-        
     }
 }

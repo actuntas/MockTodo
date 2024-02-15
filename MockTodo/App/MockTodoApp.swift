@@ -18,7 +18,8 @@ struct MockTodoApp: App {
                 NavigationView {
                     ToDoListView(
                         viewModel: ToDoViewModel(
-                            useCase: ToDoUseCase(repository: MockToDoRepository()))
+                            useCase: ToDoUseCase(repository: UserDefaultsToDoRepository())
+                        )
                     )
                     .navigationTitle("Welcome \(username)")
                 }
@@ -30,7 +31,6 @@ struct MockTodoApp: App {
                         username: $username)
                 )
             }
-            
         }
     }
     

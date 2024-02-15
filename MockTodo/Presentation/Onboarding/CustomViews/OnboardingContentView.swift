@@ -22,7 +22,7 @@ struct OnboardingContentView<Content: View>: View {
     
     var body: some View {
         VStack {
-            Text("TaskMate")
+            Text(AppConstants.appName)
                 .font(.largeTitle).fontWeight(.bold)
                 .foregroundStyle(.white)
                 .padding(.bottom, 40)
@@ -41,10 +41,14 @@ struct OnboardingContentView<Content: View>: View {
             VStack(spacing: 20) {
                 Text(title)
                     .font(.title).fontWeight(.bold)
+                    .foregroundStyle(.primary)
+
                 Text(text)
-                    .font(.caption)
+                    .font(.system(size: 16)).fontWeight(.medium)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+
             }
-            .foregroundStyle(.black)
             .padding(.horizontal, 24)
                 
             Spacer()

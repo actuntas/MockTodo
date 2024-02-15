@@ -8,17 +8,49 @@
 
 /* Begin PBXBuildFile section */
 		3612F5FC2B7DA7890097D31C /* MockTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F5FB2B7DA7890097D31C /* MockTodoApp.swift */; };
-		3612F5FE2B7DA7890097D31C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F5FD2B7DA7890097D31C /* ContentView.swift */; };
 		3612F6002B7DA78A0097D31C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3612F5FF2B7DA78A0097D31C /* Assets.xcassets */; };
 		3612F6032B7DA78A0097D31C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3612F6022B7DA78A0097D31C /* Preview Assets.xcassets */; };
+		3612F60A2B7E02E50097D31C /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F6092B7E02E50097D31C /* ToDo.swift */; };
+		3612F60E2B7E03550097D31C /* ToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F60D2B7E03550097D31C /* ToDoViewModel.swift */; };
+		3612F6102B7E038A0097D31C /* ToDoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F60F2B7E038A0097D31C /* ToDoUseCase.swift */; };
+		3612F6122B7E03AE0097D31C /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F6112B7E03AE0097D31C /* ToDoListView.swift */; };
+		3612F6142B7E03E40097D31C /* CreateToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F6132B7E03E40097D31C /* CreateToDoView.swift */; };
+		3612F61E2B7E2EB10097D31C /* OnboardingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F6192B7E2EB10097D31C /* OnboardingContentView.swift */; };
+		3612F61F2B7E2EB10097D31C /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F61A2B7E2EB10097D31C /* OnboardingButton.swift */; };
+		3612F6202B7E2EB10097D31C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F61B2B7E2EB10097D31C /* OnboardingView.swift */; };
+		3612F6212B7E2EB10097D31C /* OnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F61C2B7E2EB10097D31C /* OnboardingDataSource.swift */; };
+		3612F6222B7E2EB10097D31C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F61D2B7E2EB10097D31C /* OnboardingViewModel.swift */; };
+		3612F6282B7E36AA0097D31C /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F6272B7E36AA0097D31C /* AppConstants.swift */; };
+		3612F62B2B7E39E80097D31C /* OnboardingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F62A2B7E39E80097D31C /* OnboardingUseCase.swift */; };
+		3612F62D2B7E3B190097D31C /* OnboardingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F62C2B7E3B190097D31C /* OnboardingRepository.swift */; };
+		3612F6302B7E3B6A0097D31C /* MockOnboardingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F62F2B7E3B6A0097D31C /* MockOnboardingRepository.swift */; };
+		3612F6322B7E3BEC0097D31C /* TodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F6312B7E3BEC0097D31C /* TodoRepository.swift */; };
+		3612F6372B7E3F300097D31C /* ToDoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612F6362B7E3F300097D31C /* ToDoDto.swift */; };
+		36817BC62B7E41A200F0FD34 /* UserDefaultsToDoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36817BC52B7E41A200F0FD34 /* UserDefaultsToDoRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3612F5F82B7DA7890097D31C /* MockTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3612F5FB2B7DA7890097D31C /* MockTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTodoApp.swift; sourceTree = "<group>"; };
-		3612F5FD2B7DA7890097D31C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3612F5FF2B7DA78A0097D31C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3612F6022B7DA78A0097D31C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3612F6092B7E02E50097D31C /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		3612F60D2B7E03550097D31C /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
+		3612F60F2B7E038A0097D31C /* ToDoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUseCase.swift; sourceTree = "<group>"; };
+		3612F6112B7E03AE0097D31C /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		3612F6132B7E03E40097D31C /* CreateToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateToDoView.swift; sourceTree = "<group>"; };
+		3612F6192B7E2EB10097D31C /* OnboardingContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingContentView.swift; sourceTree = "<group>"; };
+		3612F61A2B7E2EB10097D31C /* OnboardingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
+		3612F61B2B7E2EB10097D31C /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		3612F61C2B7E2EB10097D31C /* OnboardingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingDataSource.swift; sourceTree = "<group>"; };
+		3612F61D2B7E2EB10097D31C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		3612F6272B7E36AA0097D31C /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		3612F62A2B7E39E80097D31C /* OnboardingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUseCase.swift; sourceTree = "<group>"; };
+		3612F62C2B7E3B190097D31C /* OnboardingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRepository.swift; sourceTree = "<group>"; };
+		3612F62F2B7E3B6A0097D31C /* MockOnboardingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOnboardingRepository.swift; sourceTree = "<group>"; };
+		3612F6312B7E3BEC0097D31C /* TodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepository.swift; sourceTree = "<group>"; };
+		3612F6362B7E3F300097D31C /* ToDoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDto.swift; sourceTree = "<group>"; };
+		36817BC52B7E41A200F0FD34 /* UserDefaultsToDoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsToDoRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +83,12 @@
 		3612F5FA2B7DA7890097D31C /* MockTodo */ = {
 			isa = PBXGroup;
 			children = (
-				3612F5FB2B7DA7890097D31C /* MockTodoApp.swift */,
-				3612F5FD2B7DA7890097D31C /* ContentView.swift */,
-				3612F5FF2B7DA78A0097D31C /* Assets.xcassets */,
+				3612F6262B7E34D30097D31C /* App */,
+				3612F6232B7E349F0097D31C /* Domain */,
+				3612F62E2B7E3B5C0097D31C /* Infrastructure */,
+				3612F6342B7E3C3D0097D31C /* Presentation */,
 				3612F6012B7DA78A0097D31C /* Preview Content */,
+				3612F6252B7E34C40097D31C /* Resources */,
 			);
 			path = MockTodo;
 			sourceTree = "<group>";
@@ -65,6 +99,124 @@
 				3612F6022B7DA78A0097D31C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3612F6172B7E2EB10097D31C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				3612F6182B7E2EB10097D31C /* CustomViews */,
+				3612F61C2B7E2EB10097D31C /* OnboardingDataSource.swift */,
+				3612F61B2B7E2EB10097D31C /* OnboardingView.swift */,
+				3612F61D2B7E2EB10097D31C /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		3612F6182B7E2EB10097D31C /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				3612F61A2B7E2EB10097D31C /* OnboardingButton.swift */,
+				3612F6192B7E2EB10097D31C /* OnboardingContentView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		3612F6232B7E349F0097D31C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				3612F6242B7E34AD0097D31C /* Entities */,
+				3612F6332B7E3C010097D31C /* Repositories */,
+				3612F6292B7E382F0097D31C /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		3612F6242B7E34AD0097D31C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				3612F6092B7E02E50097D31C /* ToDo.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		3612F6252B7E34C40097D31C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3612F5FF2B7DA78A0097D31C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3612F6262B7E34D30097D31C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3612F6272B7E36AA0097D31C /* AppConstants.swift */,
+				3612F5FB2B7DA7890097D31C /* MockTodoApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3612F6292B7E382F0097D31C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				3612F62A2B7E39E80097D31C /* OnboardingUseCase.swift */,
+				3612F60F2B7E038A0097D31C /* ToDoUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		3612F62E2B7E3B5C0097D31C /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				3612F6392B7E3F860097D31C /* Repositories */,
+				3612F6382B7E3F750097D31C /* DTOs */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		3612F6332B7E3C010097D31C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				3612F62C2B7E3B190097D31C /* OnboardingRepository.swift */,
+				3612F6312B7E3BEC0097D31C /* TodoRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		3612F6342B7E3C3D0097D31C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3612F6172B7E2EB10097D31C /* Onboarding */,
+				3612F6352B7E3E140097D31C /* ToDo */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3612F6352B7E3E140097D31C /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				3612F6132B7E03E40097D31C /* CreateToDoView.swift */,
+				3612F6112B7E03AE0097D31C /* ToDoListView.swift */,
+				3612F60D2B7E03550097D31C /* ToDoViewModel.swift */,
+			);
+			path = ToDo;
+			sourceTree = "<group>";
+		};
+		3612F6382B7E3F750097D31C /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				3612F6362B7E3F300097D31C /* ToDoDto.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		3612F6392B7E3F860097D31C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				36817BC52B7E41A200F0FD34 /* UserDefaultsToDoRepository.swift */,
+				3612F62F2B7E3B6A0097D31C /* MockOnboardingRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +289,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3612F5FE2B7DA7890097D31C /* ContentView.swift in Sources */,
+				3612F6122B7E03AE0097D31C /* ToDoListView.swift in Sources */,
+				3612F6142B7E03E40097D31C /* CreateToDoView.swift in Sources */,
+				3612F60E2B7E03550097D31C /* ToDoViewModel.swift in Sources */,
+				3612F62D2B7E3B190097D31C /* OnboardingRepository.swift in Sources */,
+				3612F6202B7E2EB10097D31C /* OnboardingView.swift in Sources */,
 				3612F5FC2B7DA7890097D31C /* MockTodoApp.swift in Sources */,
+				3612F6302B7E3B6A0097D31C /* MockOnboardingRepository.swift in Sources */,
+				3612F61F2B7E2EB10097D31C /* OnboardingButton.swift in Sources */,
+				3612F62B2B7E39E80097D31C /* OnboardingUseCase.swift in Sources */,
+				3612F6212B7E2EB10097D31C /* OnboardingDataSource.swift in Sources */,
+				3612F6222B7E2EB10097D31C /* OnboardingViewModel.swift in Sources */,
+				3612F6102B7E038A0097D31C /* ToDoUseCase.swift in Sources */,
+				3612F60A2B7E02E50097D31C /* ToDo.swift in Sources */,
+				3612F6282B7E36AA0097D31C /* AppConstants.swift in Sources */,
+				36817BC62B7E41A200F0FD34 /* UserDefaultsToDoRepository.swift in Sources */,
+				3612F6322B7E3BEC0097D31C /* TodoRepository.swift in Sources */,
+				3612F61E2B7E2EB10097D31C /* OnboardingContentView.swift in Sources */,
+				3612F6372B7E3F300097D31C /* ToDoDto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
