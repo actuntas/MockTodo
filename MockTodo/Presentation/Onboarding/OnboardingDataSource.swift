@@ -37,7 +37,7 @@ struct OnboardingDatasource {
                 iconName: nil,
                 title: "Get Started",
                 text: "Create your account to save and sync your tasks across devices.",
-                backgroundColor: .secondary
+                backgroundColor: AppColors.base()
             )
         ]
     }

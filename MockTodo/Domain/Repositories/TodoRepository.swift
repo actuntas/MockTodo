@@ -11,4 +11,6 @@ protocol ToDoRepository {
     func fetchToDos() -> [ToDo]
     func addToDo(_ todo: ToDo)
     func removeToDo(_ index: Int)
+    func updateToDo(_ todo: ToDo)
 }
+

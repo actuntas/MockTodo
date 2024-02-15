@@ -11,6 +11,11 @@ enum AppConstants {
     static let appName = "MockToDo"
 }
 
+enum StorageConstants {
+    static let isOnboardedKey = "isOnboarded"
+    static let usernameKey = "username"
+}
+
 enum AppColors {
     static func primaryDark() -> Color {
         Color(uiColor: UIColor(named: "PrimaryDark")!)

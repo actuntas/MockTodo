@@ -22,16 +22,16 @@ struct OnboardingContentView<Content: View>: View {
     
     var body: some View {
         VStack {
-            Text("TaskMate")
-                .font(.custom("Oxygen-Bold", size: 24))
-                .foregroundStyle(.white)
+            Text(AppConstants.appName)
+                .font(.system(size: 24, weight: .bold))
+                .foregroundStyle(.primary)
                 .padding(.bottom, 40)
             
             if let iconName = iconName {
                 Image(systemName: iconName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 250)
+                    .frame(height: UIScreen.main.bounds.height / 3)
             }
             
             content
@@ -40,18 +40,17 @@ struct OnboardingContentView<Content: View>: View {
             
             VStack(spacing: 20) {
                 Text(title)
-                    .font(.custom("Oxygen-Bold", size: 20))
+                    .font(.system(size: 20, weight: .semibold))
                 Text(text)
-                    .font(.custom("Oxygen-Regular", fixedSize: 14))
+                    .font(.system(size: 14))
             }
-            .foregroundStyle(.black)
+            .foregroundStyle(.primary)
             .padding(.horizontal, 24)
                 
             Spacer()
         }
     }
 }
-
 
 struct OnboardingSliderView: View {
     let iconName: String
@@ -74,10 +73,14 @@ struct UsernameSliderView: View {
         OnboardingContentView(title: title, text: text) {
             Spacer()
             GroupBox {
-                TextField("Type your username", text: $username)
+                TextField(Constants.placeholderText, text: $username)
                     .textFieldStyle(.plain)
                     .frame(width: UIScreen.main.bounds.width * 0.8)
             }
         }
+    }
+    
+    private enum Constants {
+        static let placeholderText = "Type your username"
     }
 }

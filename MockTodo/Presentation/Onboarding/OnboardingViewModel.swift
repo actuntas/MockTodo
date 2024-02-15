@@ -12,9 +12,10 @@ final class OnboardingViewModel: ObservableObject {
     @Binding var isOnboarded: Bool
     @Published var username: String {
         didSet {
-            UserDefaults.standard.set(username, forKey: "username")
+            UserDefaults.standard.set(username, forKey: StorageConstants.usernameKey)
         }
     }
+    
     private let useCase: OnboardingUseCase
     private(set) var datasource: [OnboardingDatasource] = []
 

@@ -8,7 +8,7 @@
 import Foundation
 
 struct ToDo: Identifiable {
-    let id: UUID = UUID()
-    var isCompleted: Bool = false
+    let id: UUID
+    var isCompleted: Bool
     var title: String
 }

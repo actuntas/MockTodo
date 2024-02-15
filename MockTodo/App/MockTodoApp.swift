@@ -9,8 +9,8 @@ import SwiftUI
 
 @main
 struct MockTodoApp: App {
-    @AppStorage("isOnboarded") var isOnboarded: Bool = false
-    @AppStorage("username") var username: String = ""
+    @AppStorage(StorageConstants.isOnboardedKey) var isOnboarded: Bool = false
+    @AppStorage(StorageConstants.usernameKey) var username: String = ""
     
     var body: some Scene {
         WindowGroup {
@@ -21,17 +21,12 @@ struct MockTodoApp: App {
             } else {
                 OnboardingView(viewModel: OnboardingViewModel(
                     useCase: OnboardingUseCase(
-                    repository: MockOnboardingRepository()),
+                        repository: MockOnboardingRepository()),
                     username: username,
                     isOnborded: $isOnboarded)
                 )
             }
         }
-    }
-    
-    private struct Constants {
-        static let isOnboardedKey = "isOnboarded"
-        static let usernameKey = "username"
     }
 }
 

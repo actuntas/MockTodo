@@ -27,6 +27,7 @@ class UserDefaultsToDoRepository: ToDoRepository {
             }
         }
     }
+    
     func fetchToDos() -> [ToDo] {
         return toDos
     }
@@ -41,6 +42,14 @@ class UserDefaultsToDoRepository: ToDoRepository {
         var updatedToDos = fetchToDos()
         if updatedToDos.indices.contains(index) {
             updatedToDos.remove(at: index)
+            toDos = updatedToDos
+        }
+    }
+    
+    func updateToDo(_ todo: ToDo) {
+        var updatedToDos = fetchToDos()
+        if let index = updatedToDos.firstIndex(where: { $0.id == todo.id }) {
+            updatedToDos[index].isCompleted = todo.isCompleted
             toDos = updatedToDos
         }
     }

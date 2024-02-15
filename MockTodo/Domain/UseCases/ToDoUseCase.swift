@@ -25,4 +25,9 @@ final class ToDoUseCase {
     func removeToDo(_ index: Int) {
         repository.removeToDo(index)
     }
+
+    func updateToDo(_ todo: ToDo) {
+        repository.updateToDo(todo)
+    }
 }
+

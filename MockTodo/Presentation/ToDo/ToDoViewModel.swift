@@ -38,6 +38,7 @@ class ToDoViewModel: ObservableObject {
     func check(_ todo: ToDo) {
         if let index = toDos.firstIndex(where: { $0.id == todo.id }) {
             toDos[index].isCompleted.toggle()
+            useCase.updateToDo(toDos[index])
         }
     }
     

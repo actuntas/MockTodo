@@ -26,19 +26,19 @@ struct OnboardingView: View {
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
     
-    private enum Constants {
-        static let skipButtonTitle = "Skip"
-        static let nextButtonTitle = "Next"
-        static let startButtonTitle = "Get Started"
-    }
-    
     private var onboardingView: some View {
         TabView(selection: $viewModel.selectedPage) {
             ForEach(viewModel.datasource.indices, id: \.self) { index in
                 if index < (viewModel.datasource.count - 1) {
-                    OnboardingSliderView(iconName: viewModel.currentPageData.iconName ?? "", title: viewModel.currentPageData.title, text: viewModel.currentPageData.text).tag(index)
+                    OnboardingSliderView(iconName: viewModel.currentPageData.iconName ?? "",
+                                         title: viewModel.currentPageData.title,
+                                         text: viewModel.currentPageData.text)
+                    .tag(index)
                 } else {
-                    UsernameSliderView(username: $viewModel.username, title: viewModel.datasource[index].title, text: viewModel.datasource[index].text).tag(index)
+                    UsernameSliderView(username: $viewModel.username,
+                                       title: viewModel.datasource[index].title,
+                                       text: viewModel.datasource[index].text)
+                    .tag(index)
                 }
             }
         }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
@@ -66,5 +66,11 @@ struct OnboardingView: View {
     
     private func startButton(title: String, action: @escaping () -> Void) -> some View {
         OnboardingButton(title: title, action: action, bordered: true)
+    }
+    
+    private enum Constants {
+        static let skipButtonTitle = "Skip"
+        static let nextButtonTitle = "Next"
+        static let startButtonTitle = "Get Started"
     }
 }
