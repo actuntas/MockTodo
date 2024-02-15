@@ -22,8 +22,8 @@ struct OnboardingContentView<Content: View>: View {
     
     var body: some View {
         VStack {
-            Text(AppConstants.appName)
-                .font(.largeTitle).fontWeight(.bold)
+            Text("TaskMate")
+                .font(.custom("Oxygen-Bold", size: 24))
                 .foregroundStyle(.white)
                 .padding(.bottom, 40)
             
@@ -40,21 +40,16 @@ struct OnboardingContentView<Content: View>: View {
             
             VStack(spacing: 20) {
                 Text(title)
-                    .font(.title).fontWeight(.bold)
-                    .foregroundStyle(.primary)
-
+                    .font(.custom("Oxygen-Bold", size: 20))
                 Text(text)
-                    .font(.system(size: 16)).fontWeight(.medium)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.secondary)
-
+                    .font(.custom("Oxygen-Regular", fixedSize: 14))
             }
+            .foregroundStyle(.black)
             .padding(.horizontal, 24)
                 
             Spacer()
         }
     }
-  
 }
 
 
@@ -86,4 +81,3 @@ struct UsernameSliderView: View {
         }
     }
 }
-

@@ -9,26 +9,21 @@ import SwiftUI
 
 @main
 struct MockTodoApp: App {
-    @AppStorage(Constants.isOnboardedKey) var isOnboarded: Bool = false
-    @AppStorage(Constants.usernameKey) var username: String = ""
+    @AppStorage("isOnboarded") var isOnboarded: Bool = false
+    @AppStorage("username") var username: String = ""
     
     var body: some Scene {
         WindowGroup {
             if isOnboarded {
                 NavigationView {
-                    ToDoListView(
-                        viewModel: ToDoViewModel(
-                            useCase: ToDoUseCase(repository: UserDefaultsToDoRepository())
-                        )
-                    )
-                    .navigationTitle("Welcome \(username)")
+                    ToDoListView(viewModel: ToDoViewModel(useCase: ToDoUseCase(repository: UserDefaultsToDoRepository()))).navigationTitle("Welcome \(username)")
                 }
-            }  else {
-                OnboardingView(
-                    viewModel: OnboardingViewModel(
-                        useCase: OnboardingUseCase(repository: MockOnboardingRepository()),
-                        isOnboarded: $isOnboarded,
-                        username: $username)
+            } else {
+                OnboardingView(viewModel: OnboardingViewModel(
+                    useCase: OnboardingUseCase(
+                    repository: MockOnboardingRepository()),
+                    username: username,
+                    isOnborded: $isOnboarded)
                 )
             }
         }
@@ -39,3 +34,4 @@ struct MockTodoApp: App {
         static let usernameKey = "username"
     }
 }
+

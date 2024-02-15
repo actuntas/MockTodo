@@ -8,27 +8,18 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @ObservedObject var viewModel: OnboardingViewModel
+    @StateObject var viewModel: OnboardingViewModel
     
     var body: some View {
         let backgroundColor = viewModel.currentPageData.backgroundColor
-        
         ZStack(alignment: .top) {
             backgroundColor.ignoresSafeArea()
-            
             VStack {
-                onboardingView
-                    .padding(.vertical, 20)
-                buttonStack
-                    .padding(.trailing)
-            }
-            .padding()
-        }
-        .onAppear(perform: setupAppearance)
-        .transition(.opacity)
-        .animation(.easeInOut, value: viewModel.selectedPage)
+                onboardingView.padding(.vertical, 20)
+                buttonStack.padding(.trailing)
+            }.padding()
+        }.onAppear(perform: setupAppearance).transition(.opacity).animation(.easeInOut(duration: 0.3), value: viewModel.selectedPage)
     }
-    
     
     private func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
@@ -40,30 +31,17 @@ struct OnboardingView: View {
         static let nextButtonTitle = "Next"
         static let startButtonTitle = "Get Started"
     }
-}
-
-//MARK: - Extracted Views
-extension OnboardingView {
     
     private var onboardingView: some View {
         TabView(selection: $viewModel.selectedPage) {
             ForEach(viewModel.datasource.indices, id: \.self) { index in
-                
                 if index < (viewModel.datasource.count - 1) {
-                    OnboardingSliderView(
-                        iconName: viewModel.currentPageData.iconName ?? "", title: viewModel.currentPageData.title,
-                        text: viewModel.currentPageData.text
-                    ).tag(index)
+                    OnboardingSliderView(iconName: viewModel.currentPageData.iconName ?? "", title: viewModel.currentPageData.title, text: viewModel.currentPageData.text).tag(index)
                 } else {
-                    UsernameSliderView(username: $viewModel.username,
-                                       title: viewModel.datasource[index].title,
-                                       text: viewModel.datasource[index].text
-                    ).tag(index)
+                    UsernameSliderView(username: $viewModel.username, title: viewModel.datasource[index].title, text: viewModel.datasource[index].text).tag(index)
                 }
-                
             }
-        }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+        }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
     }
     
     private var buttonStack: some View {
