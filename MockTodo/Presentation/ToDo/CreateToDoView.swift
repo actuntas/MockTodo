@@ -1,5 +1,5 @@
 //
-//  CreateTaskView.swift
+//  CreateToDoView.swift
 //  MockTodo
 //
 //  Created by Can Tuntaş on 15.02.2024.
@@ -17,15 +17,15 @@ struct CreateToDoView: View {
             Form {
                 TextField(Constants.todoTitle, text: $title)
                 Button(Constants.create) {
-                    let newTask = ToDo(title: title)
-                    onAdd(newTask)
+                    let newToDo = ToDo(title: title)
+                    onAdd(newToDo)
                     dismiss()
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .buttonStyle(.borderedProminent)
                 .padding(.vertical)
                 .disabled(title.isEmpty)
-                .navigationTitle(Constants.addTask)
+                .navigationTitle(Constants.addToDo)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
@@ -40,7 +40,7 @@ struct CreateToDoView: View {
     
     private enum Constants {
         static let cancel = "Cancel"
-        static let addTask = "Add Task"
+        static let addToDo = "Add ToDo"
         static let create = "Create"
         static let todoTitle = "ToDo Title"
     }
