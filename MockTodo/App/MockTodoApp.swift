@@ -16,7 +16,10 @@ struct MockTodoApp: App {
         WindowGroup {
             if isOnboarded {
                 NavigationView {
-                    ToDoListView(viewModel: ToDoViewModel(useCase: ToDoUseCase(repository: UserDefaultsToDoRepository()))).navigationTitle("Welcome \(username)")
+                    ToDoListView(viewModel: ToDoViewModel(
+                        useCase: ToDoUseCase(repository: UserDefaultsToDoRepository()))
+                    )
+                    .navigationTitle("Welcome \(username)")
                 }
             } else {
                 OnboardingView(viewModel: OnboardingViewModel(

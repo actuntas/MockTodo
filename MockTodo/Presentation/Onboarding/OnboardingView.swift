@@ -17,8 +17,12 @@ struct OnboardingView: View {
             VStack {
                 onboardingView.padding(.vertical, 20)
                 buttonStack.padding(.trailing)
-            }.padding()
-        }.onAppear(perform: setupAppearance).transition(.opacity).animation(.easeInOut(duration: 0.3), value: viewModel.selectedPage)
+            }
+            .padding()
+        }
+        .onAppear(perform: setupAppearance)
+        .transition(.opacity)
+        .animation(.easeInOut(duration: 0.3), value: viewModel.selectedPage)
     }
     
     private func setupAppearance() {

@@ -43,31 +43,3 @@ final class OnboardingViewModel: ObservableObject {
         isOnboarded.toggle()
     }
 }
-
-class OnboardingViewModel2: ObservableObject {
-    @Published var selectedPage = 0
-    @Binding var isOnboarded: Bool
-    @Binding var username: String
-    
-    let datasource: [OnboardingDatasource]
-
-    init(dataSource: [OnboardingDatasource], isOnboarded: Binding<Bool>, username: Binding<String>) {
-        self.datasource = dataSource
-        self._isOnboarded = isOnboarded
-        self._username = username
-    }
-    
-    var currentPageData: OnboardingDatasource { datasource[selectedPage] }
-
-    func nextAction() {
-        selectedPage += 1
-    }
-
-    func skipAction() {
-        selectedPage = datasource.count - 1
-    }
-    
-    func completeOnboarding() {
-        isOnboarded = true
-    }
-}
