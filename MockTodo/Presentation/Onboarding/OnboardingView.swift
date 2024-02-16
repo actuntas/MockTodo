@@ -23,11 +23,23 @@ struct OnboardingView: View {
         }
         .onAppear(perform: setupAppearance)
         .transition(.opacity)
-        .animation(showFinalPageDirectly ? nil : .easeInOut(duration: 0.3), value: viewModel.selectedPage)    }
+        .animation(showFinalPageDirectly ? nil : .easeInOut(duration: 0.3), value: viewModel.selectedPage)
+        .onChange(of: viewModel.selectedPage) { oldValue, newValue in
+            if (oldValue != newValue) && (oldValue == viewModel.datasource.count - 1) { hideKeyboard() }
+        }
+        .onTapGesture {
+            hideKeyboard()
+        }
+    }
+    
     
     private func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     private var onboardingView: some View {
@@ -76,6 +88,7 @@ struct OnboardingView: View {
     
     private func startButton(title: String, action: @escaping () -> Void) -> some View {
         OnboardingButton(title: title, action: action, bordered: true)
+            .disabled(viewModel.username.isEmpty)
     }
     
     private enum Constants {
