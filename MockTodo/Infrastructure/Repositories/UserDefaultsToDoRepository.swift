@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserDefaultsToDoRepository: ToDoRepository {
+final class UserDefaultsToDoRepository: ToDoRepository {
     private let todosKey = "todos"
     
     private var toDos: [ToDo] {
