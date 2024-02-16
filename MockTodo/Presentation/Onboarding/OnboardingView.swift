@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @StateObject var viewModel: OnboardingViewModel
+    @State private var showFinalPageDirectly: Bool = false
     
     var body: some View {
         let backgroundColor = viewModel.currentPageData.backgroundColor
@@ -22,8 +23,7 @@ struct OnboardingView: View {
         }
         .onAppear(perform: setupAppearance)
         .transition(.opacity)
-        .animation(.easeInOut(duration: 0.3), value: viewModel.selectedPage)
-    }
+        .animation(showFinalPageDirectly ? nil : .easeInOut(duration: 0.3), value: viewModel.selectedPage)    }
     
     private func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
@@ -61,7 +61,13 @@ struct OnboardingView: View {
     }
     
     private var skipButton: some View {
-        OnboardingButton(title: Constants.skipButtonTitle, action: viewModel.skipAction, bordered: false)
+        OnboardingButton(title: Constants.skipButtonTitle,
+                         action:
+                            {
+            showFinalPageDirectly = true
+            viewModel.skipAction()
+        },
+                         bordered: false)
     }
     
     private var nextButton: some View {
