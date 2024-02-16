@@ -89,6 +89,7 @@ struct OnboardingView: View {
     private func startButton(title: String, action: @escaping () -> Void) -> some View {
         OnboardingButton(title: title, action: action, bordered: true)
             .disabled(viewModel.username.isEmpty)
+            .opacity(viewModel.username.isEmpty ? 0.5 : 1)
     }
     
     private enum Constants {
