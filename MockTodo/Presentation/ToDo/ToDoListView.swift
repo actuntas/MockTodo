@@ -15,6 +15,8 @@ struct ToDoListView: View {
             // Display a message if there are no tasks.
             if viewModel.toDos.isEmpty {
                 ContentUnavailableView(Constants.noTask, systemImage: Constants.bookIcon)
+                    .offset(y: -UIScreen.main.bounds.width / 6)
+                
             } else {
                 // Display the list of tasks.
                 List {
