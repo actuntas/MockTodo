@@ -32,7 +32,6 @@ struct OnboardingView: View {
         }
     }
     
-    
     private func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
@@ -52,8 +51,8 @@ struct OnboardingView: View {
                     .tag(index)
                 } else {
                     UsernameSliderView(username: $viewModel.username,
-                                       title: viewModel.datasource[index].title,
-                                       text: viewModel.datasource[index].text)
+                                       title: viewModel.currentPageData.title,
+                                       text: viewModel.currentPageData.text)
                     .tag(index)
                 }
             }
