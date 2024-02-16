@@ -66,7 +66,7 @@ struct ToDoListView: View {
 }
 
 // Subview representing a single row in the To-Do list.
-struct ToDoRow: View {
+private struct ToDoRow: View {
     let todo: ToDo
     let checkAction: () -> Void
     

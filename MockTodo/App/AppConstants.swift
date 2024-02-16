@@ -18,22 +18,22 @@ enum StorageConstants {
 
 enum AppColors {
     static func primaryDark() -> Color {
-        Color(uiColor: UIColor(named: "PrimaryDark")!)
+        Color.primaryDark
     }
     
     static func primaryLight() -> Color {
-        Color(uiColor: UIColor(named: "PrimaryLight")!)
+        Color.primaryLight
     }
     
     static func base() -> Color {
-        Color(uiColor: UIColor(named: "Base")!)
+        Color.base
     }
     
     static func pastelGreen() -> Color {
-        Color(uiColor: UIColor(named: "PastelGreen")!)
+        Color.pastelGreen
     }
     
     static func pastelRed() -> Color {
-        Color(uiColor: UIColor(named: "PastelRed")!)
+        Color.pastelRed
     }
 }

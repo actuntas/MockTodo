@@ -12,19 +12,10 @@ class UserDefaultsToDoRepository: ToDoRepository {
     
     private var toDos: [ToDo] {
         get {
-            guard let savedToDosData = UserDefaults.standard.data(forKey: todosKey) else { return [] }
-            let decoder = JSONDecoder()
-            if let savedToDos = try? decoder.decode([ToDoDTO].self, from: savedToDosData) {
-                return savedToDos.map { $0.toDomain() }
-            }
-            return []
+            return loadToDos()
         }
         set {
-            let dtos = newValue.map { ToDoDTO.fromDomain($0) }
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(dtos) {
-                UserDefaults.standard.set(encoded, forKey: todosKey)
-            }
+            saveToDos(newValue)
         }
     }
     
@@ -33,24 +24,52 @@ class UserDefaultsToDoRepository: ToDoRepository {
     }
     
     func addToDo(_ todo: ToDo) {
-        var updatedToDos = fetchToDos()
-        updatedToDos.append(todo)
-        toDos = updatedToDos
+        toDos.append(todo)
     }
     
     func removeToDo(_ index: Int) {
-        var updatedToDos = fetchToDos()
-        if updatedToDos.indices.contains(index) {
-            updatedToDos.remove(at: index)
-            toDos = updatedToDos
+        if toDos.indices.contains(index) {
+            toDos.remove(at: index)
         }
     }
     
     func updateToDo(_ todo: ToDo) {
-        var updatedToDos = fetchToDos()
-        if let index = updatedToDos.firstIndex(where: { $0.id == todo.id }) {
-            updatedToDos[index].isCompleted = todo.isCompleted
-            toDos = updatedToDos
+        if let index = toDos.firstIndex(where: { $0.id == todo.id }) {
+            toDos[index].isCompleted = todo.isCompleted
         }
+    }
+}
+
+extension UserDefaultsToDoRepository {
+    private func saveToDos(_ toDos: [ToDo]) {
+        let dtos = toDos.toLocal()
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(dtos) {
+            UserDefaults.standard.set(encoded, forKey: todosKey)
+        }
+    }
+    
+    private func loadToDos() -> [ToDo] {
+        guard let savedToDosData = UserDefaults.standard.data(forKey: todosKey) else { return [] }
+        let decoder = JSONDecoder()
+        if let savedToDos = try? decoder.decode([ToDoDTO].self, from: savedToDosData) {
+            return savedToDos.toDomain()
+        }
+        return []
+    }
+}
+
+
+//DTO -> Domain
+private extension Array where Element == ToDoDTO {
+    func toDomain() -> [ToDo] {
+        return map { ToDo(id: $0.id, isCompleted: $0.isCompleted, title: $0.title)}
+    }
+}
+
+//Domain -> DTO
+private extension Array where Element == ToDo {
+    func toLocal() -> [ToDoDTO] {
+        return map { ToDoDTO(id: $0.id, title: $0.title, isCompleted: $0.isCompleted)}
     }
 }

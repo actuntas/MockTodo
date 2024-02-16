@@ -7,8 +7,8 @@
 
 import Foundation
 
-class ToDoViewModel: ObservableObject {
-    @Published var toDos: [ToDo] = []
+final class ToDoViewModel: ObservableObject {
+    @Published private(set) var toDos: [ToDo] = []
     @Published var addNew: Bool = false
     private var useCase: ToDoUseCase
     
