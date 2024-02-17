@@ -27,7 +27,7 @@ jobs:
 
     - name: Build
       run: |
-        xcodebuild build -project MockTodo.xcodeproj -scheme MockTodo -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0"
+        xcodebuild build -project MockTodo.xcodeproj -scheme MockTodo -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2"
 
     # - name: Run tests
     #   run: |
