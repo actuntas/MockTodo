@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 17.0, *)
 struct OnboardingView: View {
     @StateObject var viewModel: OnboardingViewModel
     @State private var showFinalPageDirectly: Bool = false
