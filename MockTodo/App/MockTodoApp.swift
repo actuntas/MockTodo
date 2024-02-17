@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 17.0, *)
 @main
 struct MockTodoApp: App {
     @AppStorage(StorageConstants.isOnboardedKey) var isOnboarded: Bool = false

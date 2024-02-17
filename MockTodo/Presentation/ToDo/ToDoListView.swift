@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 17.0, *)
 struct ToDoListView: View {
     @ObservedObject var viewModel: ToDoViewModel
     
@@ -67,7 +66,6 @@ struct ToDoListView: View {
 }
 
 // Subview representing a single row in the To-Do list.
-@available(iOS 16.0, *)
 private struct ToDoRow: View {
     let todo: ToDo
     let checkAction: () -> Void

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 16.0, *)
 struct CreateToDoView: View {
     @Environment(\.dismiss) var dismiss
     @State private var title = ""
@@ -48,9 +47,5 @@ struct CreateToDoView: View {
 }
 
 #Preview {
-    if #available(iOS 16.0, *) {
-        CreateToDoView(onAdd: {_ in})
-    } else {
-        Text("")
-    }
+    CreateToDoView(onAdd: {_ in})
 }
