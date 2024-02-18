@@ -1,35 +1,34 @@
-name: Pull Request
+name: iOS CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+
 jobs:
-  test:
-    runs-on: macos-11
+  build:
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Set up Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '14.2.0' 
 
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@1
-        with:
-          access_token: ${{ github.token }}
-          
-      - uses: ruby/setup-ruby@v20.x
+    - name: Select Xcode Version
+      run: sudo xcode-select -s /Applications/Xcode_14.2.app
 
-      - name: Install Bundler
-        run: gem install bundler
+    # - name: Install dependencies
+    #   run: |
+    #     xcodebuild -resolvePackageDependencies -project MockTodo.xcodeproj -scheme MockTodo
 
-      - name: Install gems
-        run: bundle install
+    - name: Build
+      run: |
+        xcodebuild build -project MockTodo.xcodeproj -scheme MockTodo -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15,OS=17.2"
 
-      - name: Swift Packages Cache
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: |
-            Build/SourcePackages
-            Build/Build/Products
-          key: ${{ runner.os }}-deps-v1-${{ hashFiles('BILDsolid.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
-          restore-keys: ${{ runner.os }}-deps-v1-
+    # - name: Run tests
+    #   run: |
+    #     xcodebuild test -project MockTodo.xcodeproj -scheme MockTodo -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 14,OS=17.0"
