@@ -17,4 +17,8 @@ final class OnboardingUseCase {
     func getOnboardingData() -> [OnboardingDatasource] {
         return repository.fetchOnboardingData()
     }
+    
+    func saveUsername(_ username: String) {
+        repository.saveUsername(username: username)
+    }
 }

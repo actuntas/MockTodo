@@ -21,7 +21,7 @@ final class ToDoViewModel: ObservableObject {
         toDos.sorted { !$0.isCompleted && $1.isCompleted }
     }
     
-    func loadToDos() {
+    private func loadToDos() {
         toDos = useCase.getToDos()
     }
     

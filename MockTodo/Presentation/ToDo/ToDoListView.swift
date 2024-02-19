@@ -27,7 +27,7 @@ struct ToDoListView: View {
                     }
                     .onDelete(perform: removeToDo)
                     .listStyle(.insetGrouped)
-                    .listRowSpacing(3)
+                    .listRowSpacing(Constants.listRowSpacing)
                 }
             }
         }
@@ -43,7 +43,6 @@ struct ToDoListView: View {
         }
     }
     
-    // View for the add button in the navigation bar.
     private var addButton: some View {
         Button(action: viewModel.newToDo) {
             Image(systemName: Constants.plusIcon)
@@ -62,6 +61,7 @@ struct ToDoListView: View {
         static let plusIcon = "plus.circle"
         static let bookIcon = "book.fill"
         static let noTask = "You have no tasks yet..."
+        static let listRowSpacing: CGFloat = 3
     }
 }
 
@@ -80,7 +80,7 @@ private struct ToDoRow: View {
                 }
                 
                 Text(todo.title)
-                    .font(.caption)
+                    .font(.system(size: 16, weight: .medium))
                     .strikethrough(todo.isCompleted, pattern: .solid, color: .primary)
                 Spacer()
             }

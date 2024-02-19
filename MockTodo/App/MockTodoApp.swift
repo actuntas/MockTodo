@@ -23,10 +23,9 @@ struct MockTodoApp: App {
                 }
             } else {
                 OnboardingView(viewModel: OnboardingViewModel(
-                    useCase: OnboardingUseCase(
-                        repository: MockOnboardingRepository()),
+                    useCase: OnboardingUseCase(repository: MockOnboardingRepository()),
                     username: username,
-                    isOnborded: $isOnboarded)
+                    isOnboarded: $isOnboarded)
                 )
             }
         }

@@ -9,4 +9,5 @@ import Foundation
 
 protocol OnboardingRepository {
     func fetchOnboardingData() -> [OnboardingDatasource]
+    func saveUsername(username: String)
 }

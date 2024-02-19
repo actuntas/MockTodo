@@ -8,51 +8,49 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @StateObject var viewModel: OnboardingViewModel
-    @State private var showFinalPageDirectly: Bool = false
+    @ObservedObject var viewModel: OnboardingViewModel
     
     var body: some View {
-        let backgroundColor = viewModel.currentPageData.backgroundColor
         ZStack(alignment: .top) {
-            backgroundColor.ignoresSafeArea()
+            viewModel.currentBackgroundColor.ignoresSafeArea()
+            
             VStack {
-                onboardingView.padding(.vertical, 20)
+                onboardingView.padding(.vertical, Constants.customPadding)
                 buttonStack.padding(.trailing)
             }
             .padding()
         }
-        .onAppear(perform: setupAppearance)
-        .transition(.opacity)
-        .animation(showFinalPageDirectly ? nil : .easeInOut(duration: 0.3), value: viewModel.selectedPage)
-        .onChange(of: viewModel.selectedPage) { oldValue, newValue in
-            if (oldValue != newValue) && (oldValue == viewModel.datasource.count - 1) { hideKeyboard() }
-        }
-        .onTapGesture {
+        .onAppear(perform: setPageControlTintColor)
+        .onChange(of: viewModel.selectedPage) { _, _ in
             hideKeyboard()
         }
     }
     
-    private func setupAppearance() {
+    //MARK: - Helper Methods
+    private func setPageControlTintColor() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
     
     private func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        DispatchQueue.main.async {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
     }
     
+    //MARK: - Helper Views
     private var onboardingView: some View {
         TabView(selection: $viewModel.selectedPage) {
             ForEach(viewModel.datasource.indices, id: \.self) { index in
-                if index < (viewModel.datasource.count - 1) {
+                if !viewModel.isLastPage {
                     OnboardingSliderView(iconName: viewModel.currentPageData.iconName ?? "",
-                                         title: viewModel.currentPageData.title,
-                                         text: viewModel.currentPageData.text)
+                                         title: viewModel.currentTitle,
+                                         text: viewModel.currentText)
                     .tag(index)
                 } else {
                     UsernameSliderView(username: $viewModel.username,
-                                       title: viewModel.currentPageData.title,
-                                       text: viewModel.currentPageData.text)
+                                       title: viewModel.currentTitle,
+                                       text: viewModel.currentText)
                     .tag(index)
                 }
             }
@@ -61,7 +59,7 @@ struct OnboardingView: View {
     
     private var buttonStack: some View {
         HStack {
-            if viewModel.selectedPage == (viewModel.datasource.count - 1) {
+            if viewModel.isLastPage {
                 startButton(title: Constants.startButtonTitle, action: viewModel.completeOnboarding)
             } else {
                 skipButton
@@ -73,27 +71,28 @@ struct OnboardingView: View {
     
     private var skipButton: some View {
         OnboardingButton(title: Constants.skipButtonTitle,
-                         action:
-                            {
-            showFinalPageDirectly = true
-            viewModel.skipAction()
-        },
+                         action: viewModel.skipAction,
                          bordered: false)
     }
     
     private var nextButton: some View {
-        OnboardingButton(title: Constants.nextButtonTitle, action: viewModel.nextAction, bordered: true)
+        OnboardingButton(title: Constants.nextButtonTitle,
+                         action: viewModel.nextAction,
+                         bordered: true)
     }
     
     private func startButton(title: String, action: @escaping () -> Void) -> some View {
-        OnboardingButton(title: title, action: action, bordered: true)
+        OnboardingButton(title: title, 
+                         action: action,
+                         bordered: true)
             .disabled(viewModel.username.isEmpty)
-            .opacity(viewModel.username.isEmpty ? 0.5 : 1)
+            .opacity(viewModel.username.isEmpty ? 0.2 : 1)
     }
     
     private enum Constants {
         static let skipButtonTitle = "Skip"
         static let nextButtonTitle = "Next"
         static let startButtonTitle = "Get Started"
+        static let customPadding: CGFloat = 20
     }
 }

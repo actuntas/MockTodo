@@ -9,28 +9,25 @@ import SwiftUI
 
 final class OnboardingViewModel: ObservableObject {
     @Published var selectedPage = 0
+    @Published var username: String
     @Binding var isOnboarded: Bool
-    @Published var username: String {
-        didSet {
-            UserDefaults.standard.set(username, forKey: StorageConstants.usernameKey)
-        }
-    }
     
     private let useCase: OnboardingUseCase
     private(set) var datasource: [OnboardingDatasource] = []
 
-    init(useCase: OnboardingUseCase, username: String, isOnborded: Binding<Bool>) {
+    init(useCase: OnboardingUseCase, username: String, isOnboarded: Binding<Bool>) {
         self.useCase = useCase
         self.username = username
-        self.datasource = useCase.getOnboardingData()
-        self._isOnboarded = isOnborded
+        self._isOnboarded = isOnboarded
+        fetchOnboarding()
     }
     
-    var currentPageData: OnboardingDatasource { datasource[selectedPage] }
-
+    func fetchOnboarding() { datasource = useCase.getOnboardingData() }
+    
+    private func saveUsername() { useCase.saveUsername(username) }
 
     func nextAction() {
-        if selectedPage < datasource.count - 1 {
+        if !isLastPage {
             selectedPage += 1
         }
     }
@@ -40,6 +37,15 @@ final class OnboardingViewModel: ObservableObject {
     }
     
     func completeOnboarding() {
+        saveUsername()
         isOnboarded.toggle()
     }
+}
+
+extension OnboardingViewModel {
+    var currentPageData: OnboardingDatasource { datasource[selectedPage] }
+    var currentBackgroundColor: Color { currentPageData.backgroundColor }
+    var currentTitle: String { currentPageData.title }
+    var currentText: String { currentPageData.text }
+    var isLastPage: Bool { selectedPage == datasource.count - 1 }
 }
