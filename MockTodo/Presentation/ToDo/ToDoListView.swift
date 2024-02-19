@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToDoListView: View {
-    @ObservedObject var viewModel: ToDoViewModel
+    @StateObject var viewModel: ToDoViewModel
     
     var body: some View {
         VStack {

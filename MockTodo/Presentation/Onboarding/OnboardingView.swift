@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @ObservedObject var viewModel: OnboardingViewModel
+    @StateObject var viewModel: OnboardingViewModel
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -22,7 +22,7 @@ struct OnboardingView: View {
         }
         .onAppear(perform: setPageControlTintColor)
         .onChange(of: viewModel.selectedPage) { _, _ in
-            hideKeyboard()
+                hideKeyboard()
         }
     }
     
@@ -33,9 +33,7 @@ struct OnboardingView: View {
     }
     
     private func hideKeyboard() {
-        DispatchQueue.main.async {
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-        }
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     //MARK: - Helper Views

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 final class OnboardingViewModel: ObservableObject {
     @Published var selectedPage = 0
     @Published var username: String

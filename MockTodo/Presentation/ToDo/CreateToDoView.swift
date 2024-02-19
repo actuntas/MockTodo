@@ -17,7 +17,9 @@ struct CreateToDoView: View {
             Form {
                 TextField(Constants.todoTitle, text: $title)
                 Button(Constants.create) {
-                    let newToDo = ToDo(id: UUID(), isCompleted: false, title: title)
+                    let newToDo = ToDo(id: UUID(),
+                                       isCompleted: false,
+                                       title: title)
                     onAdd(newToDo)
                     dismiss()
                 }
